@@ -4,7 +4,7 @@ module.exports = {
     "../stories/**/*.stories.mdx",
     "../stories/**/*.stories.@(js|jsx|ts|tsx)"
   ],
-  addons: ['@chakra-ui/storybook-addon', '@storybook/addon-links', '@storybook/addon-essentials'],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
   features: {
     emotionAlias: false,
   },

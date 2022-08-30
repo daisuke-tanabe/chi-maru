@@ -1,7 +1,10 @@
-import theme from '../theme'
+import { ThemeProvider } from '@mui/material'
+import { Story } from '@storybook/react'
 
-export const parameters = {
-  chakra: {
-    theme,
-  },
-}
+import { theme } from '../theme'
+export const decorators = [(Story: Story) => (
+    <ThemeProvider theme={theme}>
+      <Story />
+    </ThemeProvider>
+  ),
+]
