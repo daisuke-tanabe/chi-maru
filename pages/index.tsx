@@ -1,35 +1,35 @@
 import * as React from 'react';
 import type { NextPage } from 'next';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Link from '../src/Link';
-import ProTip from '../src/ProTip';
-import Copyright from '../src/Copyright';
+import Link from "next/link";
+import { client } from "../libs/client";
+import { Post } from './posts/[id]';
 
-const Home: NextPage = () => {
+interface Posts extends Array<Post>{}
+
+const Home: NextPage<{posts: Posts}> = ({ posts }) => {
   return (
-    <Container maxWidth="lg">
-      <Box
-        sx={{
-          my: 4,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Typography variant="h4" component="h1" gutterBottom>
-          MUI v5 + Next.js with TypeScript example
-        </Typography>
-        <Link href="/about" color="secondary">
-          Go to the about page
-        </Link>
-        <ProTip />
-        <Copyright />
-      </Box>
-    </Container>
+    <div>
+      <ul>
+        {posts.map((blog) => (
+          <li key={blog.id}>
+            <Link href={`/posts/${blog.id}`}>
+              <a>{blog.title}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
-
 export default Home;
+
+// データをテンプレートに受け渡す部分の処理を記述します
+export const getStaticProps = async () => {
+  const data = await client.get({ endpoint: "posts" });
+
+  return {
+    props: {
+      posts: data.contents,
+    },
+  };
+};
