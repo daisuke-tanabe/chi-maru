@@ -20,6 +20,7 @@ export interface Post {
   updatedAt: string;
   publishedAt: string;
   revisedAt: string;
+  postId: string;
   title: string;
   summary: string;
   content: string;
@@ -51,7 +52,7 @@ const PostCard:PostCard = ({ n,post }) => {
   return (
     <Grid xs={12} sm={6} md={4} key={post.id}>
       <Card>
-        <Link href={`/post/${post.id}`}>
+        <Link href={`/post/${post.postId}`}>
           <a style={{ textDecoration: 'none' }}>
             <CardActionArea>
               <CardMedia
@@ -98,13 +99,15 @@ export const Front = ({ posts }: { posts: Posts}): JSX.Element => {
       <Header />
 
       <main>
-        <Container maxWidth="md">
-          <Grid container spacing={4}>
-            {
-              posts.map((post, n) => PostCard({ n, post }))
-            }
-          </Grid>
-        </Container>
+        <div style={{ paddingBottom: '144px' }}>
+          <Container maxWidth="md">
+            <Grid container spacing={4}>
+              {
+                posts.map((post, n) => PostCard({ n, post }))
+              }
+            </Grid>
+          </Container>
+        </div>
       </main>
     </>
   );
