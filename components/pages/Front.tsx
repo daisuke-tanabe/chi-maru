@@ -109,6 +109,12 @@ export const Front = ({ posts }: { posts: Posts}): JSX.Element => {
           </Container>
         </div>
       </main>
+
+      <footer>
+        <Container maxWidth="md" sx={{ textAlign: "center" }}>
+          <Typography py={2}>&copy; 2022 ち。</Typography>
+        </Container>
+      </footer>
     </>
   );
 };

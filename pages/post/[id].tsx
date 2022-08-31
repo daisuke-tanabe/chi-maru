@@ -72,6 +72,12 @@ export default function BlogId({ post }:{ post:Post }) {
           </Container>
         </div>
       </main>
+
+      <footer>
+        <Container maxWidth="md" sx={{ textAlign: "center" }}>
+          <Typography py={2}>&copy; 2022 ち。</Typography>
+        </Container>
+      </footer>
     </>
   );
 }
