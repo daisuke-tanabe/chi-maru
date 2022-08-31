@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
 import Link from 'next/link'
 import {textAlign} from "@mui/system";
+import { Header } from '../organisms/Header';
 
 export interface Post {
   id: string;
@@ -94,11 +95,7 @@ const PostCard:PostCard = ({ n,post }) => {
 export const Front = ({ posts }: { posts: Posts}): JSX.Element => {
   return (
     <>
-      <header>
-        <Container maxWidth="md" sx={{ textAlign: "center" }}>
-          <Typography variant="h4" component="h1" py={18}>Site Name</Typography>
-        </Container>
-      </header>
+      <Header />
 
       <main>
         <Container maxWidth="md">

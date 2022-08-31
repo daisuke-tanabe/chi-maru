@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import * as React from "react";
 import Grid from "@mui/material/Unstable_Grid2";
 import Link from 'next/link'
+import { Header } from '../../components/organisms/Header';
 
 export interface Post {
   id: string;
@@ -32,11 +33,7 @@ export interface Post {
 export default function BlogId({ post }:{ post:Post }) {
   return (
     <>
-      <header>
-        <Container maxWidth="md" sx={{ textAlign: "center" }}>
-          <Typography variant="h4" component="h1" py={18}>Site Name</Typography>
-        </Container>
-      </header>
+      <Header />
 
       <main>
         <Container maxWidth="md">
