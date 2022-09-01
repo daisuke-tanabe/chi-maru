@@ -6,6 +6,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 import Link from 'next/link'
 import { Header } from '../../components/organisms/Header';
 import { GetStaticPropsResult } from "next";
+import Head from "../_head";
 
 export interface Post {
   id: string;
@@ -41,6 +42,11 @@ interface Props {
 export default function BlogId({ post }:{ post:Post }) {
   return (
     <>
+      <Head
+        title={post.title}
+        description={post.content.replace(/(<([^>]+)>)/gi, '').slice(0, 100)}
+      />
+
       <Header />
 
       <main>
