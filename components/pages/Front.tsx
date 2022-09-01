@@ -7,7 +7,7 @@ import { CardActionArea } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
 import Link from 'next/link'
-import { Header } from '../organisms/Header';
+import Header from '../organisms/Header';
 import Footer from '../organisms/Footer';
 
 export interface Post {

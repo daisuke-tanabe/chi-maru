@@ -2,7 +2,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import React from "react";
 
-export const Header = () => {
+const Header = () => {
   return (
     <header>
       <Container maxWidth="md" sx={{ textAlign: "center" }}>
@@ -11,3 +11,5 @@ export const Header = () => {
     </header>
   );
 };
+
+export default Header;

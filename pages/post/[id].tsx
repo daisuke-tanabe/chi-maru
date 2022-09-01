@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import React from "react";
 import Grid from "@mui/material/Unstable_Grid2";
 import Link from 'next/link'
-import { Header } from '../../components/organisms/Header';
+import Header from '../../components/organisms/Header';
 import Footer from '../../components/organisms/Footer';
 import Head from "../_head";
 
