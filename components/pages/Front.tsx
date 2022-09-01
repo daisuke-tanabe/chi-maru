@@ -91,22 +91,14 @@ const PostCard:PostCard = ({ n,post }) => {
 
 export const Front = ({ posts }: { posts: Posts}): JSX.Element => {
   return (
-    <>
-      <Header />
-
-      <main>
-        <div style={{ paddingBottom: '144px' }}>
-          <Container maxWidth="md">
-            <Grid container spacing={4}>
-              {
-                posts.map((post, n) => PostCard({ n, post }))
-              }
-            </Grid>
-          </Container>
-        </div>
-      </main>
-
-      <Footer />
-    </>
-  );
+    <div style={{ paddingBottom: '144px' }}>
+      <Container maxWidth="md">
+        <Grid container spacing={4}>
+          {
+            posts.map((post, n) => PostCard({ n, post }))
+          }
+        </Grid>
+      </Container>
+    </div>
+  )
 };

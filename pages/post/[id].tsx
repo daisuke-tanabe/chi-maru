@@ -4,8 +4,6 @@ import Typography from "@mui/material/Typography";
 import React from "react";
 import Grid from "@mui/material/Unstable_Grid2";
 import Link from 'next/link'
-import Header from '../../components/organisms/Header';
-import Footer from '../../components/organisms/Footer';
 import Head from "../_head";
 
 export interface Post {
@@ -47,39 +45,33 @@ export default function BlogId({ post }:{ post:Post }) {
         description={post.content.replace(/(<([^>]+)>)/gi, '').slice(0, 100)}
       />
 
-      <Header />
-
-      <main>
-        <div style={{ paddingBottom: '144px' }}>
-          <Container maxWidth="md">
-            <Grid container spacing={4}>
-              <Grid key={post.id}>
-                <Typography gutterBottom variant="h4" component="h2" sx={{
-                  color: '#333',
-                  fontWeight: 'bold',
-                  mb: 1,
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  display: '-webkit-box',
-                  WebkitLineClamp: '2',
-                  WebkitBoxOrient: 'vertical',
-                }}>{post.title}</Typography>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: `${post.content}`,
-                  }}
-                />
-              </Grid>
-
-              <Link href="/">
-                <a>Go to Home</a>
-              </Link>
+      <div style={{ paddingBottom: '144px' }}>
+        <Container maxWidth="md">
+          <Grid container spacing={4}>
+            <Grid key={post.id}>
+              <Typography gutterBottom variant="h4" component="h2" sx={{
+                color: '#333',
+                fontWeight: 'bold',
+                mb: 1,
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                display: '-webkit-box',
+                WebkitLineClamp: '2',
+                WebkitBoxOrient: 'vertical',
+              }}>{post.title}</Typography>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: `${post.content}`,
+                }}
+              />
             </Grid>
-          </Container>
-        </div>
-      </main>
 
-      <Footer />
+            <Link href="/">
+              <a>Go to Home</a>
+            </Link>
+          </Grid>
+        </Container>
+      </div>
     </>
   );
 }
