@@ -1,5 +1,5 @@
 import NextHead from 'next/head'
-import * as React from "react";
+import React from "react";
 
 interface Head {
   ({ title, description }: {

@@ -1,11 +1,10 @@
 import { client } from "../../libs/client";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import * as React from "react";
+import React from "react";
 import Grid from "@mui/material/Unstable_Grid2";
 import Link from 'next/link'
 import { Header } from '../../components/organisms/Header';
-import { GetStaticPropsResult } from "next";
 import Head from "../_head";
 
 export interface Post {

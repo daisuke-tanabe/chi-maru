@@ -1,6 +1,6 @@
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import * as React from "react";
+import React from "react";
 
 export const Header = () => {
   return (

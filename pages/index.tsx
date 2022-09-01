@@ -1,6 +1,5 @@
-import * as React from 'react';
+import React from 'react';
 import type { NextPage, GetStaticPropsResult } from 'next';
-import Link from "next/link";
 import { client } from "../libs/client";
 import { Post } from './post/[id]';
 import { Front } from '../components/pages/Front';
@@ -14,17 +13,6 @@ interface Props {
 const Home: NextPage<Props> = (props) => {
   return (
     <Front {...props} />
-    // <div>
-    //   <ul>
-    //     {posts.map((blog) => (
-    //       <li key={blog.id}>
-    //         <Link href={`/posts/${blog.id}`}>
-    //           <a>{blog.title}</a>
-    //         </Link>
-    //       </li>
-    //     ))}
-    //   </ul>
-    // </div>
   );
 };
 export default Home;

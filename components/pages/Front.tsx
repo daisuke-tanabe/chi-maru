@@ -1,17 +1,12 @@
-import { NextPage } from "next";
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
+import React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Container from '@mui/material/Container';
 import { CardActionArea } from '@mui/material';
-import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
 import Link from 'next/link'
-import {textAlign} from "@mui/system";
 import { Header } from '../organisms/Header';
 
 export interface Post {
