@@ -5,6 +5,7 @@ import React from "react";
 import Grid from "@mui/material/Unstable_Grid2";
 import Link from 'next/link'
 import { Header } from '../../components/organisms/Header';
+import Footer from '../../components/organisms/Footer';
 import Head from "../_head";
 
 export interface Post {
@@ -78,11 +79,7 @@ export default function BlogId({ post }:{ post:Post }) {
         </div>
       </main>
 
-      <footer>
-        <Container maxWidth="md" sx={{ textAlign: "center" }}>
-          <Typography py={2}>&copy; 2022 ち。</Typography>
-        </Container>
-      </footer>
+      <Footer />
     </>
   );
 }

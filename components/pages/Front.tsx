@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
 import Link from 'next/link'
 import { Header } from '../organisms/Header';
+import Footer from '../organisms/Footer';
 
 export interface Post {
   id: string;
@@ -105,11 +106,7 @@ export const Front = ({ posts }: { posts: Posts}): JSX.Element => {
         </div>
       </main>
 
-      <footer>
-        <Container maxWidth="md" sx={{ textAlign: "center" }}>
-          <Typography py={2}>&copy; 2022 ち。</Typography>
-        </Container>
-      </footer>
+      <Footer />
     </>
   );
 };
