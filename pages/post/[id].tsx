@@ -1,8 +1,6 @@
 import { client } from "../../libs/client";
 import Typography from "@mui/material/Typography";
 import React from "react";
-import Grid from "@mui/material/Unstable_Grid2";
-import { css } from '@emotion/react';
 import Link from 'next/link'
 import Head from "../_head";
 
