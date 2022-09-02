@@ -1,20 +1,12 @@
 import React from 'react';
-import Grid from '@mui/material/Unstable_Grid2';
+import CardGroup, { Posts } from "../organisms/CardGroup"
 
-import Card, { Post } from "../molecules/Card"
+interface FrontProps {
+  ({ posts }: { posts: Posts }): JSX.Element;
+}
 
-interface Posts extends Array<Post>{}
-
-export const Front = ({ posts }: { posts: Posts }): JSX.Element => {
+export const Front: FrontProps = (props): JSX.Element => {
   return (
-    <Grid container spacing={4}>
-      {
-        posts.map((post) => (
-          <Grid xs={12} sm={6} md={4} key={post.id}>
-            <Card { ...post} />
-          </Grid>
-        ))
-      }
-    </Grid>
+    <CardGroup { ...props } />
   )
 };

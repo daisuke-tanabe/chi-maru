@@ -15,6 +15,7 @@ const Home: NextPage<Props> = (props) => {
     <Front {...props} />
   );
 };
+
 export default Home;
 
 // データをテンプレートに受け渡す部分の処理を記述します
