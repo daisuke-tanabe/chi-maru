@@ -39,7 +39,7 @@ export default function BlogId({ post }:{ post:Post }) {
         description={post.content.replace(/(<([^>]+)>)/gi, '').slice(0, 100)}
       />
 
-      <div
+      <article
         css={{
           img: {
             maxWidth: '100%',
@@ -63,7 +63,7 @@ export default function BlogId({ post }:{ post:Post }) {
           }}
         />
 
-      </div>
+      </article>
 
       <Link href="/">
         <a>Go to Home</a>
