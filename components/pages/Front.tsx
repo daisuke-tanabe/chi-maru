@@ -46,41 +46,39 @@ const PostCard:PostCard = ({ n,post }) => {
   return (
     <Grid xs={12} sm={6} md={4} key={post.id}>
       <Card>
-        <Link href={`/post/${post.postId}`}>
-          <a style={{ textDecoration: 'none' }}>
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                height="160"
-                image={post.eyecatch.url}
-                alt=""
-              />
-              <CardContent>
-                <Typography gutterBottom variant="subtitle1" component="h2" sx={{
-                  color: '#333',
-                  fontWeight: 'bold',
-                  mb: 1,
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  display: '-webkit-box',
-                  WebkitLineClamp: '2',
-                  WebkitBoxOrient: 'vertical',
-                }}>{post.title}</Typography>
-                <Typography gutterBottom variant="body2" sx={{
-                  color: '#333',
-                  lineHeight: 1.6,
-                  height: 'calc(1.6em * 3)',
-                  mb: 2,
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  display: '-webkit-box',
-                  WebkitLineClamp: '3',
-                  WebkitBoxOrient: 'vertical',
-                }}>{post.summary}</Typography>
-                <Typography gutterBottom variant="body2" component="time" sx={{ color: '#c0c0c0' }}>{post.publishedAt}</Typography>
-              </CardContent>
-            </CardActionArea>
-          </a>
+        <Link href={`/post/${post.postId}`} prefetch={false} passHref>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="160"
+              image={post.eyecatch.url}
+              alt=""
+            />
+            <CardContent>
+              <Typography gutterBottom variant="subtitle1" component="h2" sx={{
+                color: '#333',
+                fontWeight: 'bold',
+                mb: 1,
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                display: '-webkit-box',
+                WebkitLineClamp: '2',
+                WebkitBoxOrient: 'vertical',
+              }}>{post.title}</Typography>
+              <Typography gutterBottom variant="body2" sx={{
+                color: '#333',
+                lineHeight: 1.6,
+                height: 'calc(1.6em * 3)',
+                mb: 2,
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                display: '-webkit-box',
+                WebkitLineClamp: '3',
+                WebkitBoxOrient: 'vertical',
+              }}>{post.summary}</Typography>
+              <Typography gutterBottom variant="body2" component="time" sx={{ color: '#c0c0c0' }}>{post.publishedAt}</Typography>
+            </CardContent>
+          </CardActionArea>
         </Link>
       </Card>
     </Grid>
