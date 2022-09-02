@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Front, Posts } from './Front';
+import { Front } from './Front';
 
 export default {
   title: 'pages/Front',
