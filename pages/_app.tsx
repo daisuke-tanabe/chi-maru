@@ -5,6 +5,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import theme from '../src/theme';
+import Container from '@mui/material/Container';
 import createEmotionCache from '../src/createEmotionCache';
 import Header from '../components/organisms/Header';
 import Footer from '../components/organisms/Footer';
@@ -26,7 +27,11 @@ export default function MyApp(props: MyAppProps) {
         <CssBaseline />
         <Header />
         <main>
-          <Component {...pageProps} />
+          <div css={{ paddingBottom: '144px' }}>
+            <Container maxWidth="md">
+              <Component {...pageProps} />
+            </Container>
+          </div>
         </main>
         <Footer />
       </ThemeProvider>
