@@ -2,6 +2,7 @@ import { client } from "../../libs/client";
 import Typography from "@mui/material/Typography";
 import React from "react";
 import Grid from "@mui/material/Unstable_Grid2";
+import { css } from '@emotion/react';
 import Link from 'next/link'
 import Head from "../_head";
 
@@ -38,29 +39,35 @@ export default function BlogId({ post }:{ post:Post }) {
         description={post.content.replace(/(<([^>]+)>)/gi, '').slice(0, 100)}
       />
 
-      <Grid container spacing={4}>
-        <Grid key={post.id}>
-          <Typography gutterBottom variant="h4" component="h2" sx={{
-            color: '#333',
-            fontWeight: 'bold',
-            mb: 1,
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            display: '-webkit-box',
-            WebkitLineClamp: '2',
-            WebkitBoxOrient: 'vertical',
-          }}>{post.title}</Typography>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: `${post.content}`,
-            }}
-          />
-        </Grid>
+      <div
+        css={{
+          img: {
+            maxWidth: '100%',
+            height: 'auto'
+          }
+        }}
+      >
+        <Typography gutterBottom variant="h4" component="h2" sx={{
+          color: '#333',
+          fontWeight: 'bold',
+          mb: 1,
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          display: '-webkit-box',
+          WebkitLineClamp: '2',
+          WebkitBoxOrient: 'vertical',
+        }}>{post.title}</Typography>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: `${post.content}`,
+          }}
+        />
 
-        <Link href="/">
-          <a>Go to Home</a>
-        </Link>
-      </Grid>
+      </div>
+
+      <Link href="/">
+        <a>Go to Home</a>
+      </Link>
     </>
   );
 }
