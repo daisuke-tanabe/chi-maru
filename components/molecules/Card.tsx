@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '@mui/material/Card';
+import { default as MCard } from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
@@ -31,13 +31,13 @@ export interface Post {
   }
 }
 
-interface PostCard {
+interface Card {
   (post: Post): JSX.Element
 }
 
-const PostCard: PostCard = (post) => {
+const Card: Card = (post) => {
   return (
-    <Card>
+    <MCard>
       <Link href={`/post/${post.postId}`} prefetch={false} passHref>
         <CardActionArea>
           <CardMedia
@@ -77,8 +77,8 @@ const PostCard: PostCard = (post) => {
           </CardContent>
         </CardActionArea>
       </Link>
-    </Card>
+    </MCard>
   )
 }
 
-export default PostCard
+export default Card

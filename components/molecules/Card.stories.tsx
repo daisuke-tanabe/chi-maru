@@ -1,6 +1,6 @@
 import React from 'react';
 import {ComponentMeta, ComponentStory} from '@storybook/react';
-import PostCard from './PostCard';
+import Card from './Card';
 
 const post = {
   "id": "rti33uxoq",
@@ -28,13 +28,13 @@ const post = {
 }
 
 export default {
-  title: 'molecules/PostCard',
-  component: PostCard,
-} as ComponentMeta<typeof PostCard>;
+  title: 'molecules/Card',
+  component: Card,
+} as ComponentMeta<typeof Card>;
 
-const Template: ComponentStory<typeof PostCard> = (post) => {
+const Template: ComponentStory<typeof Card> = (post) => {
   return (
-    <PostCard {...post} />
+    <Card {...post} />
   );
 }
 
