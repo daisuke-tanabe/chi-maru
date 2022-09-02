@@ -31,11 +31,11 @@ export interface Post {
   }
 }
 
-interface Card {
+export interface CardProps {
   (post: Post): JSX.Element
 }
 
-const Card: Card = (post) => {
+const Card: CardProps = (post) => {
   return (
     <MCard>
       <Link href={`/post/${post.postId}`} prefetch={false} passHref>
