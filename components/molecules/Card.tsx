@@ -4,7 +4,9 @@ import CardContent from '@mui/material/CardContent';
 import {CardActionArea, CardMedia} from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
+import { DateTime } from "luxon";
 import Image, { ImageLoaderProps } from 'next/image';
+import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 
 export interface Post {
   id: string;
@@ -40,6 +42,8 @@ const imageLoader = ({ src, width, quality }: ImageLoaderProps) => {
 }
 
 const Card: CardProps = ({ post, index, firstViewCardNumber}) => {
+  const date = DateTime.fromISO(post.publishedAt)
+
   return (
     <MCard>
       <Link href={`/post/${post.postId}`} prefetch={false} passHref>
@@ -87,7 +91,25 @@ const Card: CardProps = ({ post, index, firstViewCardNumber}) => {
               WebkitLineClamp: '3',
               WebkitBoxOrient: 'vertical',
             }}>{post.summary}</Typography>
-            <Typography gutterBottom variant="body2" component="time" sx={{ color: '#c0c0c0' }}>{post.publishedAt}</Typography>
+            <Typography
+              gutterBottom
+              variant="body2"
+              component="time"
+              sx={{
+                color: '#c0c0c0',
+                display: 'flex',
+                alignItems: 'center'
+              }}
+            >
+              <AccessTimeOutlinedIcon
+                css={{
+                  color: '#c0c0c0',
+                  fontSize: '16px',
+                  marginRight: '8px'
+                }}
+              />
+              {date.year}-{date.month}-{date.day}
+            </Typography>
           </CardContent>
         </CardActionArea>
       </Link>
