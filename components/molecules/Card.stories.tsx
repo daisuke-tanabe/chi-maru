@@ -39,4 +39,4 @@ const Template: ComponentStory<typeof Card> = (post) => {
 }
 
 export const Base = Template.bind(post);
-Base.args = post;
+Base.args = { index: 1, post };

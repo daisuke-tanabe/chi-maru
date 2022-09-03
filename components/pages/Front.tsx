@@ -2,7 +2,7 @@ import React from 'react';
 import CardGroup, { Posts } from "../organisms/CardGroup"
 
 interface FrontProps {
-  ({ posts }: { posts: Posts }): JSX.Element;
+  ({ posts, firstViewCardNumber }: { posts: Posts, firstViewCardNumber: number }): JSX.Element;
 }
 
 export const Front: FrontProps = (props): JSX.Element => {

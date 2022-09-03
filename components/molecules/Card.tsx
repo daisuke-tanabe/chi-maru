@@ -1,7 +1,7 @@
 import React from 'react';
 import { default as MCard } from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import { CardActionArea } from '@mui/material';
+import {CardActionArea, CardMedia} from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import Image, { ImageLoaderProps } from 'next/image';
@@ -32,29 +32,38 @@ export interface Post {
 }
 
 export interface CardProps {
-  (post: Post): JSX.Element
+  ({ post, index, firstViewCardNumber }:{ post: Post; index: number; firstViewCardNumber: number; }): JSX.Element
 }
 
 const imageLoader = ({ src, width, quality }: ImageLoaderProps) => {
   return `${src}?w=${width}&q=${quality || 75}`
 }
 
-const Card: CardProps = (post) => {
+const Card: CardProps = ({ post, index, firstViewCardNumber}) => {
   return (
     <MCard>
       <Link href={`/post/${post.postId}`} prefetch={false} passHref>
         <CardActionArea>
-          <Image
-            loader={imageLoader}
-            height={post.eyecatch.height}
-            width={post.eyecatch.width}
-            src={post.eyecatch.url}
-            alt={post.title}
+          <CardMedia
             css={{
-              maxWidth: '100%',
-              height: 'auto'
+              position: 'relative',
+              aspectRatio: `auto 700/433`
             }}
-          />
+          >
+            <Image
+              height={post.eyecatch.height}
+              width={post.eyecatch.width}
+              src={imageLoader({
+                src: post.eyecatch.url,
+                width: post.eyecatch.width,
+              })}
+              layout="fill"
+              objectFit="cover"
+              alt={post.title}
+              priority={index < firstViewCardNumber}
+              unoptimized
+            />
+          </CardMedia>
           <CardContent>
             <Typography gutterBottom variant="subtitle1" component="h2" sx={{
               color: '#333',
