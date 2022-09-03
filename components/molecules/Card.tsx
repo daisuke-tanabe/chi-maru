@@ -4,7 +4,6 @@ import CardContent from '@mui/material/CardContent';
 import {CardActionArea, CardMedia} from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
-import { DateTime } from "luxon";
 import Image, { ImageLoaderProps } from 'next/image';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 
@@ -42,7 +41,7 @@ const imageLoader = ({ src, width, quality }: ImageLoaderProps) => {
 }
 
 const Card: CardProps = ({ post, index, firstViewCardNumber}) => {
-  const date = DateTime.fromISO(post.publishedAt)
+  const date = new Date(Date.parse(post.publishedAt));
 
   return (
     <MCard>
@@ -108,7 +107,7 @@ const Card: CardProps = ({ post, index, firstViewCardNumber}) => {
                   marginRight: '8px'
                 }}
               />
-              {date.year}-{date.month}-{date.day}
+              {date.getFullYear()}-{date.getMonth() + 1}-{date.getDate()}
             </Typography>
           </CardContent>
         </CardActionArea>
