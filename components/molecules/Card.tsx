@@ -68,6 +68,7 @@ const Card: CardProps = ({ post, index, firstViewCardNumber}) => {
             <Typography gutterBottom variant="subtitle1" component="h2" sx={{
               color: '#333',
               fontWeight: 'bold',
+              height: 'calc(1.75em * 2)',
               mb: 1,
               overflow: 'hidden',
               textOverflow: 'ellipsis',
