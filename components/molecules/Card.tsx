@@ -54,8 +54,6 @@ const Card: CardProps = ({ post, index, firstViewCardNumber}) => {
             }}
           >
             <Image
-              height={post.eyecatch.height}
-              width={post.eyecatch.width}
               src={imageLoader({
                 src: post.eyecatch.url,
                 width: post.eyecatch.width,
