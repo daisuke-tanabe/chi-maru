@@ -1,7 +1,6 @@
 import React from 'react';
-import NextApp from 'next/app';
+import NextApp, { AppProps, AppContext } from 'next/app';
 import Head from './_head';
-import { AppProps } from 'next/app';
 import {createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider, EmotionCache } from '@emotion/react';
@@ -10,12 +9,10 @@ import createEmotionCache from '../src/createEmotionCache';
 import Header from '../components/organisms/Header';
 import Footer from '../components/organisms/Footer';
 import mediaQuery from 'css-mediaquery';
-import parser from 'ua-parser-js';
 import { red } from "@mui/material/colors";
+import environmentDetector, { DeviceType } from '../src/environmentDetector';
 
-type DeviceType = string | 'mobile' | 'desktop' | ''
-
-interface MyAppProps extends AppProps {
+type MyAppProps = AppProps & {
   emotionCache?: EmotionCache;
   deviceType: DeviceType;
 }
@@ -23,15 +20,10 @@ interface MyAppProps extends AppProps {
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
-export default function MyApp(props: MyAppProps) {
+const MyApp = (props: MyAppProps) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps, deviceType } = props;
-
-  console.log(deviceType);
-
   const ssrMatchMedia = (query: string) => ({
     matches: mediaQuery.match(query, {
-      // ブラウザを開いた時の想定値を入れる
-      // 開いた瞬間はSSでは何も値を持っていないのでこういう処理が必要らしい
       width: deviceType === 'mobile' ? '0px' : '600px',
     }),
   });
@@ -54,7 +46,6 @@ export default function MyApp(props: MyAppProps) {
           },
           components: {
             MuiUseMediaQuery: {
-              // Change the default options of useMediaQuery
               defaultProps: { ssrMatchMedia },
             },
           },
@@ -75,15 +66,14 @@ export default function MyApp(props: MyAppProps) {
     </CacheProvider>
   );
 }
+export default MyApp;
 
-MyApp.getInitialProps = async (context: any) => {
-  const initialProps = await NextApp.getInitialProps(context)
-
+MyApp.getInitialProps = async (context: AppContext) => {
   const { req } = context.ctx;
-  const deviceType: DeviceType = req ? parser(req.headers['user-agent']).device.type || 'desktop' : '';
+  const deviceType = req ? environmentDetector(req.headers['user-agent']) : undefined;
 
   return {
-    ...initialProps,
+    ...await NextApp.getInitialProps(context),
     deviceType
   };
 };
