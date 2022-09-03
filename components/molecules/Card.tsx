@@ -41,7 +41,8 @@ const imageLoader = ({ src, width, quality }: ImageLoaderProps) => {
 }
 
 const Card: CardProps = ({ post, index, firstViewCardNumber}) => {
-  const date = new Date(Date.parse(post.publishedAt));
+  const japanTime = new Date(Date.parse(post.publishedAt)).toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' });
+  const date = new Date(japanTime);
 
   return (
     <MCard>
