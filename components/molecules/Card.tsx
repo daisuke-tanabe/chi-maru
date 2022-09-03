@@ -1,10 +1,10 @@
 import React from 'react';
 import { default as MCard } from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
 import Typography from '@mui/material/Typography';
-import Link from 'next/link'
+import Link from 'next/link';
+import Image, { ImageLoaderProps } from 'next/image';
 
 export interface Post {
   id: string;
@@ -35,18 +35,22 @@ export interface CardProps {
   (post: Post): JSX.Element
 }
 
+const imageLoader = ({ src, width, quality }: ImageLoaderProps) => {
+  return `${src}?w=${width}&q=${quality || 75}`
+}
+
 const Card: CardProps = (post) => {
   return (
     <MCard>
       <Link href={`/post/${post.postId}`} prefetch={false} passHref>
         <CardActionArea>
-          <CardMedia
-            component="img"
+          <Image
+            loader={imageLoader}
             height={post.eyecatch.height}
             width={post.eyecatch.width}
-            image={post.eyecatch.url}
+            src={post.eyecatch.url}
             alt={post.title}
-            sx={{
+            css={{
               maxWidth: '100%',
               height: 'auto'
             }}
