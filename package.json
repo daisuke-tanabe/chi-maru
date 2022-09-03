@@ -19,11 +19,13 @@
     "@mui/icons-material": "^5.10.3",
     "@mui/material": "^5.10.3",
     "@next/bundle-analyzer": "^12.2.5",
+    "css-mediaquery": "^0.1.2",
     "framer-motion": "^6",
     "microcms-js-sdk": "^2.2.1",
     "next": "12.2.5",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "ua-parser-js": "^1.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.18.13",
@@ -35,9 +37,11 @@
     "@storybook/manager-webpack5": "^6.5.10",
     "@storybook/react": "^6.5.10",
     "@storybook/testing-library": "^0.0.13",
+    "@types/css-mediaquery": "^0.1.1",
     "@types/node": "18.7.13",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
+    "@types/ua-parser-js": "^0.7.36",
     "babel-loader": "^8.2.5",
     "eslint": "8.22.0",
     "eslint-config-next": "12.2.5",
