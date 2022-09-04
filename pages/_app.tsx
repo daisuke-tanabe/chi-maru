@@ -1,5 +1,5 @@
 import React from 'react';
-import NextApp, { AppProps, AppContext } from 'next/app';
+import { AppProps } from 'next/app';
 import Head from './_head';
 import {createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -9,26 +9,17 @@ import createEmotionCache from '../src/createEmotionCache';
 import Header from '../components/organisms/Header';
 import Footer from '../components/organisms/Footer';
 import ProgressBar from '../components/organisms/ProgressBar';
-import mediaQuery from 'css-mediaquery';
 import { red } from "@mui/material/colors";
-import environmentDetector, { DeviceType } from '../src/environmentDetector';
 
 type MyAppProps = AppProps & {
   emotionCache?: EmotionCache;
-  deviceType: DeviceType;
 }
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
 const MyApp = (props: MyAppProps) => {
-  const { Component, emotionCache = clientSideEmotionCache, pageProps, deviceType } = props;
-  const ssrMatchMedia = (query: string) => ({
-    matches: mediaQuery.match(query, {
-      width: deviceType === 'mobile' ? '0px' : '600px',
-    }),
-  });
-
+  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   return (
     <CacheProvider value={emotionCache}>
       <Head/>
@@ -43,11 +34,6 @@ const MyApp = (props: MyAppProps) => {
             },
             error: {
               main: red.A400,
-            },
-          },
-          components: {
-            MuiUseMediaQuery: {
-              defaultProps: { ssrMatchMedia },
             },
           },
         })}
@@ -69,13 +55,3 @@ const MyApp = (props: MyAppProps) => {
   );
 }
 export default MyApp;
-
-MyApp.getInitialProps = async (context: AppContext) => {
-  const { req } = context.ctx;
-  const deviceType = req ? environmentDetector(req.headers['user-agent']) : undefined;
-
-  return {
-    ...await NextApp.getInitialProps(context),
-    deviceType
-  };
-};

@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import type { NextPage, GetStaticProps } from 'next';
 import { client } from "../libs/client";
 import { Post } from './post/[id]';
 import { Front } from '../components/pages/Front';
-import useMediaQuery from "@mui/material/useMediaQuery";
 
 interface Posts extends Array<Post>{}
 
@@ -12,15 +11,7 @@ interface NextPageProps {
 }
 
 const Home: NextPage<NextPageProps> = ({ posts }) => {
-  // min-width:600px以上はファーストビューに入るカード6枚をプリロード
-  const isMatchSm = useMediaQuery('(min-width:600px)');
-
-  const [firstViewCardNumber] = useState(() => {
-    if (isMatchSm) return 6;
-    return 2;
-  });
-
-  const props = { posts, firstViewCardNumber }
+  const props = { posts, firstViewCardNumber: 6 }
 
   return (
     <Front {...props} />
