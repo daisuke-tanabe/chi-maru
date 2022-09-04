@@ -2,7 +2,6 @@ import { client } from "../../libs/client";
 import Typography from "@mui/material/Typography";
 import React from "react";
 import Link from 'next/link'
-import Head from "../_head";
 import Layout from '../../components/template/Layout';
 
 export interface Post {
@@ -36,38 +35,32 @@ export default function BlogId({ post }:{ post:Post }) {
   const description = content.replace(regexp, '').slice(0, 100);
 
   return (
-    <>
-      <Head
-        title={title}
-        description={description}
-      />
-      <Layout>
-        <article
-          css={{
-            img: {
-              maxWidth: '100%',
-              height: 'auto'
-            }
-          }}
-        >
-          <Typography gutterBottom variant="h4" component="h2" sx={{
-            color: '#333',
-            fontWeight: 'bold',
-            mb: 1,
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            display: '-webkit-box',
-            WebkitLineClamp: '2',
-            WebkitBoxOrient: 'vertical',
-          }}>{title}</Typography>
-          <div dangerouslySetInnerHTML={{__html: `${content}`}} />
-        </article>
+    <Layout>
+      <article
+        css={{
+          img: {
+            maxWidth: '100%',
+            height: 'auto'
+          }
+        }}
+      >
+        <Typography gutterBottom variant="h4" component="h2" sx={{
+          color: '#333',
+          fontWeight: 'bold',
+          mb: 1,
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          display: '-webkit-box',
+          WebkitLineClamp: '2',
+          WebkitBoxOrient: 'vertical',
+        }}>{title}</Typography>
+        <div dangerouslySetInnerHTML={{__html: `${content}`}} />
+      </article>
 
-        <Link href="/">
-          <a>Go to Home</a>
-        </Link>
-      </Layout>
-    </>
+      <Link href="/">
+        <a>Go to Home</a>
+      </Link>
+    </Layout>
   );
 }
 
