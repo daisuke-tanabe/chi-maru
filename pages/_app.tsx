@@ -8,6 +8,7 @@ import Container from '@mui/material/Container';
 import createEmotionCache from '../src/createEmotionCache';
 import Header from '../components/organisms/Header';
 import Footer from '../components/organisms/Footer';
+import ProgressBar from '../components/organisms/ProgressBar';
 import mediaQuery from 'css-mediaquery';
 import { red } from "@mui/material/colors";
 import environmentDetector, { DeviceType } from '../src/environmentDetector';
@@ -53,6 +54,7 @@ const MyApp = (props: MyAppProps) => {
       >
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline/>
+        <ProgressBar />
         <Header/>
         <main>
           <div css={{paddingBottom: '144px'}}>
