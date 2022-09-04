@@ -30,9 +30,7 @@ export interface Post {
 }
 
 export default function BlogId({ post }:{ post:Post }) {
-  const regexp =  new RegExp(/<([^>]+)>|&(lt|gt|nbsp|amp);/gi);
   const { title, content } = post;
-  const description = content.replace(regexp, '').slice(0, 100);
 
   return (
     <Layout>
