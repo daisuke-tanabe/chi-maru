@@ -1,15 +1,12 @@
 import React from 'react';
 import { AppProps } from 'next/app';
 import Head from './_head';
+import theme from '../src/theme'
 import {createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider, EmotionCache } from '@emotion/react';
-import Container from '@mui/material/Container';
 import createEmotionCache from '../src/createEmotionCache';
-import Header from '../components/organisms/Header';
-import Footer from '../components/organisms/Footer';
-import ProgressBar from '../components/organisms/ProgressBar';
-import { red } from "@mui/material/colors";
+import ProgressBar from '../components/organisms/ProgressBar'
 
 type MyAppProps = AppProps & {
   emotionCache?: EmotionCache;
@@ -20,36 +17,15 @@ const clientSideEmotionCache = createEmotionCache();
 
 const MyApp = (props: MyAppProps) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+
   return (
     <CacheProvider value={emotionCache}>
       <Head/>
-      <ThemeProvider
-        theme={createTheme({
-          palette: {
-            primary: {
-              main: '#556cd6',
-            },
-            secondary: {
-              main: '#19857b',
-            },
-            error: {
-              main: red.A400,
-            },
-          },
-        })}
-      >
+      <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline/>
         <ProgressBar />
-        <Header/>
-        <main>
-          <div css={{paddingBottom: '144px'}}>
-            <Container maxWidth="md">
-              <Component {...pageProps} />
-            </Container>
-          </div>
-        </main>
-        <Footer/>
+        <Component {...pageProps} />
       </ThemeProvider>
     </CacheProvider>
   );
