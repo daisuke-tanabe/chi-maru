@@ -31,11 +31,15 @@ export interface Post {
 }
 
 export default function BlogId({ post }:{ post:Post }) {
+  const regexp =  new RegExp(/<([^>]+)>|&(lt|gt|nbsp|amp);/gi);
+  const { title, content } = post;
+  const description = content.replace(regexp, '').slice(0, 100);
+
   return (
     <>
       <Head
-        title={post.title}
-        description={post.content.replace(/(<([^>]+)>)/gi, '').slice(0, 100)}
+        title={title}
+        description={description}
       />
       <Layout>
         <article
@@ -55,13 +59,8 @@ export default function BlogId({ post }:{ post:Post }) {
             display: '-webkit-box',
             WebkitLineClamp: '2',
             WebkitBoxOrient: 'vertical',
-          }}>{post.title}</Typography>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: `${post.content}`,
-            }}
-          />
-
+          }}>{title}</Typography>
+          <div dangerouslySetInnerHTML={{__html: `${content}`}} />
         </article>
 
         <Link href="/">
